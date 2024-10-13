@@ -1,0 +1,127 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1040px;
+    height: auto;
+    aspect-ratio: 1040 / 500;
+    max-height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* background-color: #e5e5e5; */
+}
+
+header {
+    width: 100%;
+    height: 76px;
+    max-width: 1040px;
+    box-sizing: border-box;
+    padding: 0 5px 0 5px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+
+    /* border: 1px solid; */
+
+    .name {
+        width: 111px;
+        margin-left: 10px;
+        margin-top: 15px;
+        font-family: 'Noto Sans';
+        font-size: 40px;
+        font-weight: 700;
+        user-select: none;
+        white-space: nowrap;
+    }
+}
+
+form {
+    margin-top: 34px;
+    width: 100%;
+    height: 390px;
+    box-sizing: border-box;
+    padding: 5px 5px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    /* border: 1px solid; */
+}
+
+.input-question {
+    width: 100%;
+    max-width: 1030px;
+    height: auto;
+    aspect-ratio: 1030 / 274;
+    max-height: 274px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/Users/haneulkim/Documents/GDG 2024/Questioning/assets/ask_question/question input box.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    textarea {
+        width: 95%;
+        height: 90%;
+        box-sizing: border-box;
+        border: none;
+        font-family: 'ABeeZee';
+        font-size: 18px;
+        outline: none;
+        /* border: 1px solid; */
+    }
+}
+
+.buttons {
+    width: 100%;
+    height: 72px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+
+    /* border: 1px solid; */
+}
+
+.ask-button {
+    width: 72px;
+    height: 72px;
+    border: none;
+    box-sizing: border-box;
+    background-color: transparent;
+    background-image: url("/Users/haneulkim/Documents/GDG 2024/Questioning/assets/ask_question/ask button.svg");
+    position: absolute;
+    left: calc(50% - 36px);
+}
+
+.ask-button:hover {
+    transform: scale(1.05)
+}
+
+.back-button {
+    font-family: 'ABeeZee';
+    font-size: 20px;
+    text-decoration: underline;
+    color: #808080;
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 5px;
+}
+
+.back-button:hover{
+    color: black;
+}

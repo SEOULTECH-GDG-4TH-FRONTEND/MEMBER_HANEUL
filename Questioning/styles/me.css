@@ -1,0 +1,129 @@
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper {
+    width: 100%;
+    max-width: 1040px;
+    height: auto;
+    aspect-ratio: 1040 / 500;
+    max-height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* background-color: #e5e5e5; */
+}
+
+header {
+    width: 100%;
+    height: 76px;
+    max-width: 1040px;
+    box-sizing: border-box;
+    padding: 0 5px 0 5px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    /* border: 1px solid; */
+
+}
+
+.title {
+    width: 244px;
+    height: 65px;
+    background-image: url("/Users/haneulkim/Documents/GDG 2024/Questioning/assets/me/title.svg");
+    display: flex;
+    position: relative;
+
+    .profile {
+        position: absolute;
+        font-family: 'Bevan';
+        font-size: 40px;
+        color: #ffffff;
+        inset: 0 0 0 19px;
+        user-select: none;
+    }
+}
+
+form {
+    margin-top: 34px;
+    width: 100%;
+    height: 390px;
+    box-sizing: border-box;
+    padding: 5px 5px 0px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    /* border: 1px solid; */
+}
+
+.question-container {
+    width: 100%;
+    height: 390px;
+    padding: 5px;
+    margin-top: 34px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(1030px, 1fr));
+    max-width: 1040px;
+    row-gap: 22px;
+    column-gap: 26px;
+    overflow-x: visible;
+    overflow-y: auto;
+    justify-items: center;
+    /* border: 1px solid; */
+    box-sizing: border-box;
+}
+
+.question-card {
+    width: 99%;
+    max-width: 1030px;
+    height: 145px;
+    background-image: url('/Users/haneulkim/Documents/GDG 2024/Questioning/assets/me/question box.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+
+    .content {
+        width: 90%;
+    }
+    
+    .asker {
+        position: absolute;
+        font-family: 'Bevan';
+        font-size: 40px;
+        color: #ffffff;
+        inset: 34px 0 0 53px;
+        user-select: none;
+    }
+
+    .name {
+        position: absolute;
+        font-family: 'Noto Sans';
+        font-size: 25px;
+        inset: 32px 0 0 137px;
+        color: #000000;
+        user-select: none;
+        font-weight: 700;
+    }
+
+    .introduction {
+        position: absolute;
+        font-family: 'Noto Sans';
+        font-size: 13px;
+        font-weight: 700;
+        inset: 73px 0 0 137px;
+        color: #808080;
+        user-select: none;
+    }
+
+}

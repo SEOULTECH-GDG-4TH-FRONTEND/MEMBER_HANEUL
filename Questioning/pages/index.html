@@ -1,0 +1,54 @@
+<!--
+    index.html: Login Page
+-->
+
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../styles/global.css" />
+        <link rel="stylesheet" href="../styles/index.css" />
+        <title>Login Page</title>
+    </head>
+
+    <body>
+
+        <form action="main.html" method="get">
+            
+            <img src="/Users/haneulkim/Documents/GDG 2024/Questioning/assets/global/Logo.svg">
+
+            <div class="signin-group">
+
+                <p>Sign in</p>
+
+                <label class="sr-only" for="id">ID</label>
+                <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    placeholder="id"
+                    required
+                />
+
+                <label class="sr-only" for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="password"
+                    required
+                />
+                <button>Sign in</button>
+            </div>
+
+            <div class="signup-group">
+                <label class="sr-only" for="id">OR</label>
+                <p>-or-</p>
+                <label class="sr-only" for="id">Create Account</label>
+                <button type="button" onclick="location.href='signup.html'">Create Account</button>
+            </div>
+
+        </form>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="../styles/global.css" />
+        <link rel="stylesheet" href="../styles/answer_question.css" />
+        <title>SignUp Page</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <img src="/Users/haneulkim/Documents/GDG 2024/Questioning/assets/answer_question/answer a question.svg">
+            </header>
+            <form>
+                <label class="sr-only" for="question recieved">Question Recieved</label>
+                <div class="question-recieved">
+                    <span>
+                        여기에 질문이 표시됩니다.<br/>
+                        여기에 질문이 표시됩니다.<br/>
+                        여기에 질문이 표시됩니다.<br/>
+                        여기에 질문이 표시됩니다.<br/>
+                        여기에 질문이 표시됩니다.<br/>
+                    </span>
+                </div>
+                <div class="input-answer">
+                    <label class="sr-only" for="input-question">Input Question</label>
+                    <textarea
+                        type="text"
+                        id="question"
+                        name="quesiton"
+                        placeholder="Answer to the quesiton now!"
+                        required
+                    ></textarea>
+                </div>
+                <div class="buttons">
+                    <button type="submit" class="answer-button"></button>
+                    <button class="back-button" onclick="location.href='me.html'">back</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
