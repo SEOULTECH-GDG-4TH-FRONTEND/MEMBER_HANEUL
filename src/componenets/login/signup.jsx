@@ -29,6 +29,10 @@ const Wrapper = styled.div`
         font-size: 20px;
         border: 0;
         text-decoration: underline;
+
+        &: hover {
+            transform: scale(1.05);
+        }   
     }
 `;
 

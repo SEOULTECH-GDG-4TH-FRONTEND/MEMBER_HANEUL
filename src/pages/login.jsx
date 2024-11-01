@@ -38,4 +38,6 @@ const Wrapper = styled.form`
 const LogoStyle = styled.img`
     width: 280px;
     height: 245px;
+    user-select: none;
+    pointer-events: none;
 `

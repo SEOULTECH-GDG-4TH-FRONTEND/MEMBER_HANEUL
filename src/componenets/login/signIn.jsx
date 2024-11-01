@@ -76,11 +76,20 @@ const Wrapper = styled.div`
     button {
         width: 71px;
         height: 25px;
+        line-height: 20px;
         border-radius: 10px;
         background-color: #000000;
         color: #ffffff;
         border: 0;
         font-family: 'ADLaM Display';
         font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        justify content: center;
+        align-items: center;
+
+        &: hover {
+            transform: scale(1.05);
+        }
     }
 `;
