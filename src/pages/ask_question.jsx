@@ -3,8 +3,8 @@ import Container from '../componenets/global/container';
 import Header from '../componenets/global/header';
 import Body from '../componenets/global/body';
 
-import QuestionHeader from '../componenets/question/questionHeader';
-import QuestionInput from '../componenets/question/questionInput';
+import QuestionHeader from '../componenets/ask_question/questionHeader';
+import QuestionInput from '../componenets/ask_question/questionInput';
 import SubmitBtn from '../componenets/global/submitBtn';
 import BackBtn from '../componenets/global/backBtn';
 export default function Question() {
@@ -17,8 +17,8 @@ export default function Question() {
             <Body padding='0px 5px' justifyContent="space-between">
                 <QuestionInput/>
                 <Buttons>
-                    <CenterButtonWrapper><SubmitBtn width="72px" height="72px" url="/main"/></CenterButtonWrapper>
-                    <BackBtn url="/main"/>
+                    <CenterButtonWrapper><SubmitBtn width="72px" height="72px" url="/board"/></CenterButtonWrapper>
+                    <BackBtn url="/board"/>
                 </Buttons>
             </Body>
         </Container>
@@ -46,7 +46,7 @@ const Buttons = styled.div`
     justify-content: space-between;
     position: relative;
 
-    border: 1px solid;
+    // border: 1px solid;
 `
 
 const CenterButtonWrapper = styled.div`

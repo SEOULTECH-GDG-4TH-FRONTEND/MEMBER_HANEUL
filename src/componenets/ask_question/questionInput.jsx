@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import InputBox from "../../assets/question/q_input.svg";
+import InputBox from "../../assets/ask_question/q_input.svg";
 
 export default function Question() {
     return (
@@ -20,8 +20,8 @@ const Wrapper = styled.div`
     width: 100%;
     max-width: 1030px;
     height: auto;
-    aspect-ratio: 1030 / 274;
-    max-height: 274px;
+    aspect-ratio: 1030 / 275;
+    max-height: 275px;
     display: flex;
     flex-direction: column;
     align-items: center;

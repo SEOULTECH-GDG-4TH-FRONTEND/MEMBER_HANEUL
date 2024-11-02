@@ -28,7 +28,7 @@ const Wrapper = styled.div`
         transform: scale(1.05);
     }
 
-    border: solid 1px;
+    // border: solid 1px;
 `
 
 const Image = styled.img`

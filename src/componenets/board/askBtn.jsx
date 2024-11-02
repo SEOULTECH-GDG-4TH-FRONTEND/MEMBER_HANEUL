@@ -6,7 +6,7 @@ export default function AskBtn(){
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate('/question'); 
+        navigate('/ask_question'); 
     };
 
     return(

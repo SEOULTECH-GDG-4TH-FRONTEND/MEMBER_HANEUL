@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import '../../assets/font.css';
 
 import CardImg from '../../assets/board/question_card.svg'
+import Button from './boardBtn'
 
-export default function QuestionCard({writer, title, content, status}){
+export default function BoardCard({writer, title, content, status}){
     return(
         <Wrapper writer={writer} title={title} content={content} status={status}>
             <QuestionWrapper>
@@ -12,7 +13,11 @@ export default function QuestionCard({writer, title, content, status}){
                 <Content>{content}</Content>
             </QuestionWrapper>
             <ButtonWrapper>
-                <Button>{status}</Button>
+                {status === 'replied' ? (
+                    <Button defaultText="replied !" hoverText="see more"/>
+                ) : (
+                    <Button defaultText="pending..." hoverText="see more"/>
+                )}
             </ButtonWrapper>
         </Wrapper>
     );
@@ -91,21 +96,4 @@ const Content = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-`
-
-const Button = styled.button`
-    width: 150px;
-    height: 50px;
-    background-color: white;
-    font-family: 'Bevan';
-    font-size: 20px;
-    border: 3.5px solid;
-    box-sizing: border-box;
-    border-radius: 15px;
-
-    &:hover {
-        background-color: #b2b2b2;
-        color: white;
-        border: 0;
-    }
 `

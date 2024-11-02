@@ -18,6 +18,7 @@ export default function BackBtn({url}){
 const Back = styled.div`
     font-family: 'ABeeZee';
     font-size: 22px;
+    height: 22px;
     text-decoration: underline;
     color: #808080;
     background-color: transparent;

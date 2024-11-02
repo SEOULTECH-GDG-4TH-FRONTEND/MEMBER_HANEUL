@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import '../../assets/font.css';
 
-import Question from '../../assets/question/question_header.svg';
+import Question from '../../assets/ask_question/question_header.svg';
 
 export default function QuestionHeader(){
     return(
@@ -18,8 +18,6 @@ const Wrapper = styled.div`
     box-sizing: border-box;
     user-select: none;
     pointer-events: none;
-    
-    border: 1px solid;
 `
 
 const Image = styled.img`

@@ -4,7 +4,7 @@ import Header from '../componenets/global/header';
 import Body from '../componenets/global/body';
 
 import BoardHeader from '../componenets/board/boardHeader';
-import QuestionCard from '../componenets/board/questionCard';
+import QuestionCard from '../componenets/board/boardCard';
 import AskBtn from '../componenets/board/askBtn';
 import BackBtn from '../componenets/global/backBtn';
 
@@ -12,14 +12,14 @@ export default function Mypage() {
     return (
         <Container>
             <Header justifyContent="center" alignContent="center">
-                <BoardHeader name="p"/>
+                <BoardHeader name="H"/>
             </Header>
             <Body padding='0px 5px'>
                 <CardContainer>
-                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending...'/>
-                    <QuestionCard writer='누리' title='누리는 아긴데' content='누리는 아긴데 산책 가고 싶은데 언니는 늦잠만 자고 기분 별로 안 조아' status='replied !'/>
-                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending...'/>
-                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending...'/>
+                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
+                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아' status='pending'/>
+                    <QuestionCard writer='누리' title='누리는 아긴데' content='누리는 아긴데 언니는 늦잠만 자고 기분 별로 안 조아' status='pending'/>
+                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
                 </CardContainer>
 
                 <Buttons>
@@ -34,9 +34,10 @@ export default function Mypage() {
 const CardContainer = styled.div`
     width: 100%;
     height: auto;
-    aspect-ratio: 1030 / 320;
-
+    aspect-ratio: 1030 / 310;
     overflow: auto;
+
+    border: 1px solid;
 `
 
 const Buttons = styled.div`
@@ -52,7 +53,7 @@ const Buttons = styled.div`
     margin-top: 20px;
     padding: 5px 0px;
 
-    // border: 1px solid;
+    border: 1px solid;
 `
 
 const CenterButtonWrapper = styled.div`

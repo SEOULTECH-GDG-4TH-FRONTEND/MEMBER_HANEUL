@@ -18,7 +18,6 @@ const Wrapper = styled.div`
     justify-content: ${({ justifyContent }) => justifyContent || 'start'};
     align-items: ${({ alignItems }) => alignItems || 'center'};
     padding: ${({ padding }) => padding || '0'};
-    overflow: auto;
 
-    // border: 1px solid;
+    border: 1px solid;
 `
