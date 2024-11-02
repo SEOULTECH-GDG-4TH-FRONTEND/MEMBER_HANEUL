@@ -14,7 +14,7 @@ export default function Question() {
                 <QuestionHeader/>
                 <Name>김하늘</Name>
             </Header>
-            <Body justifyContent="space-between">
+            <Body padding='0px 5px' justifyContent="space-between">
                 <QuestionInput/>
                 <Buttons>
                     <CenterButtonWrapper><SubmitBtn width="72px" height="72px" url="/main"/></CenterButtonWrapper>

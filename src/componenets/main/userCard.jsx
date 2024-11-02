@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import "../../assets/font.css"
 
-import cardImage from "../../assets/main/card.svg";
+import cardImage from "../../assets/main/user_card.svg";
 
 
 export default function UserCard({ profile, name, introduction }) {
     const navigate = useNavigate();
 
     const handleUserCard = () => {
-        navigate("/question");
+        navigate("/board");
     };
 
     return (

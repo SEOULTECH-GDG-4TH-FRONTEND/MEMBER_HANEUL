@@ -62,18 +62,18 @@ export default function Main() {
 }
 
 const UserContainer = styled.div`
-    width: 1040px;
-    height: 390px;
-    padding: 2px 5px;
+    width: 100%;
+    aspect-ratio: 1040 / 390;
+    padding: 2px 0px;
     display: grid;
     box-sizing: border-box;
     grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
-    max-width: 1040px;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
     row-gap: 22px;
-    column-gap: 26px;
-    overflow-x: visible;
     overflow-y: auto;
-    justify-items: center;
 
     border: 1px solid;
 `;
