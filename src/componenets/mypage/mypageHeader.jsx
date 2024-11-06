@@ -2,18 +2,18 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import '../../assets/font.css';
 
-import Browse from '../../assets/main/browse_header.svg';
+import Me from '../../assets/global/me.svg'
 
-export default function BrowseHeader(){
+export default function MypageHeader(){
     return(
         <Wrapper>
-            <Image src={Browse} />
+            <Image src={Me} />
         </Wrapper>
     );
 };
 
 const Wrapper = styled.div`
-    width: 295px;
+    width: 76px;
     height: 76px;
     box-sizing: border-box;
     user-select: none;
@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 `
 
 const Image = styled.img`
-    width: 295px;
-    height: 76px;
+    width: 100%;
+    height: 100%;
+    draggable: false;
 `

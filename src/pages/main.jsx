@@ -75,5 +75,5 @@ const UserContainer = styled.div`
     row-gap: 22px;
     overflow-y: auto;
 
-    border: 1px solid;
+    // border: 1px solid;
 `;

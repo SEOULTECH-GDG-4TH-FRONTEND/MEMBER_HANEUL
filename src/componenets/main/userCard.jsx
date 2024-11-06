@@ -32,7 +32,7 @@ const Wrapper = styled.div`
         transform: scale(1.02);
     }
 
-    border: 1px solid;
+    // border: 1px solid;
 `;
 
 const Profile = styled.h1`

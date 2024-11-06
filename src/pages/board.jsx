@@ -14,7 +14,7 @@ export default function Mypage() {
             <Header justifyContent="center" alignContent="center">
                 <BoardHeader name="H"/>
             </Header>
-            <Body padding='0px 5px'>
+            <Body padding='0px 5px' justifyContent="space-between">
                 <CardContainer>
                     <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
                     <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아' status='pending'/>
@@ -37,7 +37,7 @@ const CardContainer = styled.div`
     aspect-ratio: 1030 / 310;
     overflow: auto;
 
-    border: 1px solid;
+    // border: 1px solid;
 `
 
 const Buttons = styled.div`
@@ -50,10 +50,10 @@ const Buttons = styled.div`
     align-items: flex-start;
     justify-content: space-between;
     position: relative;
-    margin-top: 20px;
+    // margin-top: 20px;
     padding: 5px 0px;
 
-    border: 1px solid;
+    // border: 1px solid;
 `
 
 const CenterButtonWrapper = styled.div`

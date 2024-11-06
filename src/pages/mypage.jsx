@@ -3,18 +3,17 @@ import Container from '../componenets/global/container';
 import Header from '../componenets/global/header';
 import Body from '../componenets/global/body';
 
-import BoardHeader from '../componenets/board/boardHeader';
+import MypageHeader from '../componenets/mypage/mypageHeader';
 import QuestionCard from '../componenets/mypage/mypageCard';
-import AskBtn from '../componenets/board/askBtn';
 import BackBtn from '../componenets/global/backBtn';
 
 export default function Mypage() {
     return (
         <Container>
             <Header justifyContent="center" alignContent="center">
-                <BoardHeader name="H"/>
+                <MypageHeader/>
             </Header>
-            <Body padding='0px 5px'>
+            <Body padding='0px 5px' justifyContent="space-between">
                 <CardContainer>
                     <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
                     <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아' status='replied'/>
@@ -33,10 +32,10 @@ export default function Mypage() {
 const CardContainer = styled.div`
     width: 100%;
     height: auto;
-    aspect-ratio: 1030 / 350;
+    aspect-ratio: 1030 / 368;
     overflow: auto;
 
-    border: 1px solid;
+    // border: 1px solid;
 `
 
 const Buttons = styled.div`
@@ -49,10 +48,8 @@ const Buttons = styled.div`
     align-items: flex-end;
     justify-content: end;
     position: relative;
-    margin-top: 20px;
-    padding: 5px 0px;
 
-    border: 1px solid;
+    // border: 1px solid;
 `
 
 const CenterButtonWrapper = styled.div`

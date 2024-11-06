@@ -7,6 +7,7 @@ import QuestionHeader from '../componenets/ask_question/questionHeader';
 import QuestionInput from '../componenets/ask_question/questionInput';
 import SubmitBtn from '../componenets/global/submitBtn';
 import BackBtn from '../componenets/global/backBtn';
+
 export default function Question() {
     return (
         <Container>

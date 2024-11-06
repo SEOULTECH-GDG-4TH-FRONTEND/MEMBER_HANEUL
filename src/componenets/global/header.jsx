@@ -20,5 +20,5 @@ const Wrapper = styled.div`
     justify-content: ${({ justifyContent }) => justifyContent || 'center'};
     align-items: ${({ alignItems }) => alignItems || 'center'};
 
-    border: 1px solid;
+    // border: 1px solid;
 `

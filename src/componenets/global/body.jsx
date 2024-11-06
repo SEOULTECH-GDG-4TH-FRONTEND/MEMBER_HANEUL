@@ -19,5 +19,5 @@ const Wrapper = styled.div`
     align-items: ${({ alignItems }) => alignItems || 'center'};
     padding: ${({ padding }) => padding || '0'};
 
-    border: 1px solid;
+    // border: 1px solid;
 `

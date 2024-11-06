@@ -35,7 +35,7 @@ const Wrapper = styled.div`
     background-image: url(${CardImg});
     background-size: contain;
     background-repeat: no-repeat;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     box-sizing: border-box;
 
     // border: 1px solid;
