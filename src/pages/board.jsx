@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { useLocation } from "react-router-dom";
+
 import Container from '../componenets/global/container';
 import Header from '../componenets/global/header';
 import Body from '../componenets/global/body';
@@ -8,11 +10,14 @@ import QuestionCard from '../componenets/board/boardCard';
 import AskBtn from '../componenets/board/askBtn';
 import BackBtn from '../componenets/global/backBtn';
 
-export default function Mypage() {
+export default function Board() {
+    const location = useLocation();
+    const { icon, name, bio, replyCount} = location.state || {};
+
     return (
         <Container>
             <Header justifyContent="center" alignContent="center">
-                <BoardHeader name="H"/>
+                <BoardHeader name={icon}/>
             </Header>
             <Body padding='0px 5px' justifyContent="space-between">
                 <CardContainer>

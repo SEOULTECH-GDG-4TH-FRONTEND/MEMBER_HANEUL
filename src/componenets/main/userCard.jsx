@@ -9,7 +9,7 @@ export default function UserCard({ icon, name, bio, replyCount }) {
     const navigate = useNavigate();
 
     const handleUserCard = () => {
-        navigate("/board");
+        navigate("/board", { state: { icon, name, bio, replyCount } });
     };
 
     return (
