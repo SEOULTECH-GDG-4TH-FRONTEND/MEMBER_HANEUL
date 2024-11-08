@@ -1,32 +1,48 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react"; 
+import {login} from "../../apis/user";
 import '../../assets/font.css';
 
 export default function SignIn() {
     const navigate = useNavigate();
+    const [loginEmail, setLoginEmail] = useState(""); // email 상태 추가
+    const [loginPassword, setLoginPassword] = useState(""); // password 상태 추가
+    const [responseMessage, setResponseMessage] = useState(""); // 응답 메시지 상태 추가
 
-    const handleSignIn = () => {
-        navigate("/main");
+    const handleSignIn = async (e) => {
+        e.preventDefault(); // 버튼의 기본 동작 방지
+        
+        if (loginEmail==="ciellehera@gmail.com" && loginPassword==="skykim2002") { 
+            login();
+            navigate("/main");
+        } else {
+            alert("Incorrect username or password.")
+        }
     };
 
     return (
-        <Wrapper>
+        <Wrapper onSubmit={handleSignIn}>
             <p>Sign in</p>
             <input
-                type="text"
-                id="id"
-                name="id"
-                placeholder="id"
+                type="email"
+                id="loginEmail"
+                name="loginEmail"
+                placeholder="Email"
+                value={loginEmail}
+                onChange={(e) => setLoginEmail(e.target.value)} // email 상태 업데이트
                 required
             />
             <input
                 type="password"
-                id="password"
-                name="password"
-                placeholder="password"
+                id="loginPassword"
+                name="loginPassword"
+                placeholder="Password"
+                value={loginPassword}
+                onChange={(e) => setLoginPassword(e.target.value)} // password 상태 업데이트
                 required
             />
-            <button onClick={handleSignIn}>Sign in</button>
+            <button type="submit" onClick={handleSignIn}>Sign in</button>
         </Wrapper>
     );
 }
@@ -93,3 +109,7 @@ const Wrapper = styled.div`
         }
     }
 `;
+
+const Form = styled.div`
+
+`

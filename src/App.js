@@ -9,8 +9,10 @@ import AskQuestion from './pages/ask_question';
 import ReplyQuestion from './pages/reply_question';
 import ViewQuestion from './pages/view_question';
 import Mypage from './pages/mypage';
+import { useEffect, useState } from 'react';
 
 function App() {
+
   return (
     <Router>
       <Routes>

@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import { useEffect } from 'react'
+import { useState } from 'react'
+
 import Container from '../componenets/global/container';
 import Header from '../componenets/global/header';
 import Body from '../componenets/global/body';
@@ -7,6 +10,24 @@ import MeBtn from '../componenets/main/meBtn';
 import UserCard from '../componenets/main/userCard';
 
 export default function Main() {
+
+    const [profiles, setProfiles] = useState([])
+
+    useEffect(() => {
+      const fetchProfiles = async () => {
+        const response = await fetch(
+          'https://api-test-gdsc-22b48e20369e.herokuapp.com/api/data'
+        )
+        if (response.ok) {
+          const data = await response.json()
+          console.log(data)
+          setProfiles(data)
+        }
+      }
+
+      fetchProfiles()
+    }, [])
+
     return (
         <Container>
             <Header justifyContent="space-between" alignContent="center">
@@ -15,46 +36,16 @@ export default function Main() {
             </Header>
             <Body>
                 <UserContainer>
-                    <UserCard 
-                        profile="h" 
-                        name="김하늘" 
-                        introduction="안녕하세요. 질문해주세요." 
-                    />
-                    <UserCard 
-                        profile="h" 
-                        name="김하늘" 
-                        introduction="안녕하세요. 질문해주세요." 
-                    />
-                    <UserCard 
-                        profile="h" 
-                        name="김하늘" 
-                        introduction="안녕하세요. 질문해주세요." 
-                    />
-                    <UserCard 
-                        profile="h" 
-                        name="김하늘" 
-                        introduction="안녕하세요. 질문해주세요." 
-                    />
-                    <UserCard 
-                        profile="h" 
-                        name="김하늘" 
-                        introduction="안녕하세요. 질문해주세요." 
-                    />
-                    <UserCard 
-                        profile="h" 
-                        name="김하늘" 
-                        introduction="안녕하세요. 질문해주세요." 
-                    />
-                    <UserCard 
-                        profile="h" 
-                        name="김하늘" 
-                        introduction="안녕하세요. 질문해주세요." 
-                    />
-                    <UserCard 
-                        profile="h" 
-                        name="김하늘" 
-                        introduction="안녕하세요. 질문해주세요." 
-                    />
+                    {profiles.map((profile) => (
+                        <UserCard
+                        key={profile.id}
+                        id={profile.id}
+                        icon={profile.id}
+                        name={profile.name}
+                        bio={profile.bio}
+                        replyCount={profile.questionCount}
+                        />
+                    ))}
                 </UserContainer>
             </Body>
         </Container>

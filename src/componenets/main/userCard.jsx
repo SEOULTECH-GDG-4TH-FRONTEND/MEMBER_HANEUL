@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "../../assets/font.css"
 
 import cardImage from "../../assets/main/user_card.svg";
+import questionsReplied from '../../assets/main/questionsReplied.svg';
 
-
-export default function UserCard({ profile, name, introduction }) {
+export default function UserCard({ icon, name, bio, replyCount }) {
     const navigate = useNavigate();
 
     const handleUserCard = () => {
@@ -14,9 +14,13 @@ export default function UserCard({ profile, name, introduction }) {
 
     return (
         <Wrapper onClick={handleUserCard}>
-            <Profile>{profile}</Profile>
+            <Icon>{icon}</Icon>
             <Name>{name}</Name>
-            <Introduction>{introduction}</Introduction>
+            <Bio>{bio}</Bio>
+            <ReplyCount>
+                <img src={questionsReplied}/>
+                <p>{replyCount}</p>
+            </ReplyCount>
         </Wrapper>
     );
 }
@@ -35,14 +39,22 @@ const Wrapper = styled.div`
     // border: 1px solid;
 `;
 
-const Profile = styled.h1`
+const Icon = styled.div`
+    width: 75px;
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     font-family: 'Bevan';
     font-size: 40px;
     color: #ffffff;
-    inset: 34px 0 0 53px;
+    inset: 26px 0 0 30px;
     margin: 0;
     user-select: none;
+
+    // border: 1px solid black;
 `;
 
 const Name = styled.h1`
@@ -56,7 +68,7 @@ const Name = styled.h1`
     font-weight: 700;
 `;
 
-const Introduction = styled.span`
+const Bio = styled.span`
     position: absolute;
     font-family: 'Noto Sans';
     font-size: 13px;
@@ -66,3 +78,30 @@ const Introduction = styled.span`
     color: #808080;
     user-select: none;
 `;
+
+const ReplyCount = styled.div`
+    width: 260px;
+    height: 19px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    inset: 130px 0 26px 30px;
+    user-select: none;
+
+    // border: 1px solid;
+
+    img {
+        width: 232px;
+        height: 19px;
+        draggable: false;
+    }
+
+    p {
+        color: #808080;
+        font-family: 'Noto Sans';
+        font-weight: 700;
+        font-size: 13px;
+    }
+`

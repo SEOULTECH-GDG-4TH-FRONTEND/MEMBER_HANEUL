@@ -16,7 +16,7 @@ export default function Mypage() {
             <Body padding='0px 5px' justifyContent="space-between">
                 <CardContainer>
                     <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
-                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아' status='replied'/>
+                    <QuestionCard writer='누리' title='궁금한 점' content='가나다라마바사아가나다라마바사아' status='replied'/>
                     <QuestionCard writer='누리' title='누리는 아긴데' content='누리는 아긴데 언니는 늦잠만 자고 기분 별로 안 조아' status='pending'/>
                     <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
                 </CardContainer>

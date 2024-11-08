@@ -16,7 +16,7 @@ export default function BoardCard({writer, title, content, status}){
                 {status === 'replied' ? (
                     <Button defaultText="replied !" hoverText="see more"/>
                 ) : (
-                    <Button defaultText="pending..." hoverText="see more"/>
+                    <Button defaultText="pending..." hoverText="see more" theme="#b2b2b2"/>
                 )}
             </ButtonWrapper>
         </Wrapper>
