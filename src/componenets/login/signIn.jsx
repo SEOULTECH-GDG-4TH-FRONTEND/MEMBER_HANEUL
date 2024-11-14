@@ -1,48 +1,61 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react"; 
-import {login} from "../../apis/user";
 import '../../assets/font.css';
+import { login } from "../../apis/user";
 
 export default function SignIn() {
     const navigate = useNavigate();
-    const [loginEmail, setLoginEmail] = useState(""); // email 상태 추가
-    const [loginPassword, setLoginPassword] = useState(""); // password 상태 추가
+    const [email, setEmail] = useState(""); // email 상태 추가
+    const [password, setPassword] = useState(""); // password 상태 추가
     const [responseMessage, setResponseMessage] = useState(""); // 응답 메시지 상태 추가
 
-    const handleSignIn = async (e) => {
-        e.preventDefault(); // 버튼의 기본 동작 방지
+    // const handleSignIn = async (e) => {
+    //     e.preventDefault(); // 버튼의 기본 동작 방지
         
-        if (loginEmail==="ciellehera@gmail.com" && loginPassword==="skykim2002") { 
-            login();
+    //     if (loginEmail==="ciellehera@gmail.com" && loginPassword==="skykim2002") { 
+    //         login();
+    //         navigate("/main");
+    //     } else {
+    //         alert("Incorrect username or password.")
+    //     }
+    // };
+
+    const handleSignIn = async (e) => {
+        e.preventDefault();
+        try {
+            await login(email, password).then((data) => {
+                console.log(data);
+            })
+            alert("로그인 성공");
             navigate("/main");
-        } else {
-            alert("Incorrect username or password.")
+        } catch (error) {
+            alert("로그인 실패");
         }
     };
 
     return (
-        <Wrapper onSubmit={handleSignIn}>
+        <Wrapper>
             <p>Sign in</p>
             <input
                 type="email"
-                id="loginEmail"
-                name="loginEmail"
-                placeholder="Email"
-                value={loginEmail}
-                onChange={(e) => setLoginEmail(e.target.value)} // email 상태 업데이트
+                id="email"
+                name="email"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // email 상태 업데이트
                 required
             />
             <input
                 type="password"
-                id="loginPassword"
-                name="loginPassword"
-                placeholder="Password"
-                value={loginPassword}
-                onChange={(e) => setLoginPassword(e.target.value)} // password 상태 업데이트
+                id="password"
+                name="password"
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)} // password 상태 업데이트
                 required
             />
-            <button type="submit" onClick={handleSignIn}>Sign in</button>
+            <button onClick={(e) => handleSignIn(e)}>Sign in</button>
         </Wrapper>
     );
 }

@@ -1,20 +1,12 @@
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 export const login = (email, password) => {
-    return axios
-        .post(
-            "http://localhost:8080/api/user/login",
-            {
-                email,
-                password,
-            },
-            {
-                withCredentials: true,
-            }
-        )
-        .then((response) => {
-            return response.data;
+    return axiosInstance
+        .post("/user/login", {
+            email,
+            password,
         })
+        .then((response) => response.data)
         .catch((error) => {
             throw error;
         });
