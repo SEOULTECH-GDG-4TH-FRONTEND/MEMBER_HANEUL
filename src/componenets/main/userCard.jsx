@@ -5,21 +5,21 @@ import "../../assets/font.css"
 import cardImage from "../../assets/main/user_card.svg";
 import questionsReplied from '../../assets/main/questionsReplied.svg';
 
-export default function UserCard({ icon, name, bio, replyCount }) {
+export default function UserCard({ profile }) {
     const navigate = useNavigate();
 
     const handleUserCard = () => {
-        navigate("/board", { state: { icon, name, bio, replyCount } });
+        navigate("/board", { state: { user: profile } });
     };
 
     return (
         <Wrapper onClick={handleUserCard}>
-            <Icon>{icon}</Icon>
-            <Name>{name}</Name>
-            <Bio>{bio}</Bio>
+            <Icon>{profile.id}</Icon>
+            <Name>{profile.name}</Name>
+            <Bio>{profile.bio}</Bio>
             <ReplyCount>
                 <img src={questionsReplied}/>
-                <p>{replyCount}</p>
+                <p>{profile.questionCount}</p>
             </ReplyCount>
         </Wrapper>
     );

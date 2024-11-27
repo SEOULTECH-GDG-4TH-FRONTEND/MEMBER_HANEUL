@@ -2,15 +2,11 @@ import styled from 'styled-components';
 import { useNavigate } from "react-router-dom";
 import '../../assets/font.css';
 
-export default function AskBtn(){
+export default function AskBtn({ onClick }){
     const navigate = useNavigate();
 
-    const handleClick = () => {
-        navigate('/ask_question'); 
-    };
-
     return(
-        <Button onClick={handleClick}>
+        <Button onClick={onClick}>
             + new question
         </Button>
     );

@@ -1,4 +1,5 @@
 import './App.css';
+import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Login from './pages/login';
@@ -14,18 +15,20 @@ import { useEffect, useState } from 'react';
 function App() {
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/main" element={<Main />} />
-        <Route path="/sample" element={<Sample />} />
-        <Route path="/board" element={<Board />} />
-        <Route path="/ask_question" element={<AskQuestion/>} />
-        <Route path="/reply_question" element={<ReplyQuestion/>} />
-        <Route path="/view_question" element={<ViewQuestion/>} />
-        <Route path="/mypage" element={<Mypage/>} />
-      </Routes>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/main" element={<Main />} />
+          <Route path="/sample" element={<Sample />} />
+          <Route path="/board" element={<Board />} />
+          <Route path="/ask_question" element={<AskQuestion/>} />
+          <Route path="/reply_question" element={<ReplyQuestion/>} />
+          <Route path="/view_question" element={<ViewQuestion/>} />
+          <Route path="/mypage" element={<Mypage/>} />
+        </Routes>
     </Router>
+    </AuthProvider>
   );
 }
 

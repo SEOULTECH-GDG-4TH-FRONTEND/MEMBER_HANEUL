@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import InputBox from "../../assets/ask_question/q_input.svg";
 
-export default function Question() {
+export default function QuestionInput({ onChange }) {
     return (
         <Wrapper>
             <textarea
@@ -11,6 +11,7 @@ export default function Question() {
                 name="quesiton"
                 placeholder="What do you want to ask about?"
                 required
+                onChange={onChange}
             ></textarea>
         </Wrapper>
     );

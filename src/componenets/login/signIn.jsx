@@ -1,25 +1,23 @@
 import styled from "styled-components";
+import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react"; 
+import { useEffect, useState } from "react";
 import '../../assets/font.css';
+
 import { login } from "../../apis/user";
 
 export default function SignIn() {
     const navigate = useNavigate();
-    const [email, setEmail] = useState(""); // email 상태 추가
-    const [password, setPassword] = useState(""); // password 상태 추가
-    const [responseMessage, setResponseMessage] = useState(""); // 응답 메시지 상태 추가
+    const { setLogin, isLoggedIn } = useAuth();
+    const [email, setEmail] = useState(""); 
+    const [password, setPassword] = useState(""); 
+    const [responseMessage, setResponseMessage] = useState(""); 
 
-    // const handleSignIn = async (e) => {
-    //     e.preventDefault(); // 버튼의 기본 동작 방지
-        
-    //     if (loginEmail==="ciellehera@gmail.com" && loginPassword==="skykim2002") { 
-    //         login();
-    //         navigate("/main");
-    //     } else {
-    //         alert("Incorrect username or password.")
-    //     }
-    // };
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate("/main");
+        }
+    }, [isLoggedIn, navigate]);
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -28,7 +26,6 @@ export default function SignIn() {
                 console.log(data);
             })
             alert("로그인 성공");
-            navigate("/main");
         } catch (error) {
             alert("로그인 실패");
         }

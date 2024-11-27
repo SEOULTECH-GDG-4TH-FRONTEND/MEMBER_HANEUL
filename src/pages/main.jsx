@@ -38,12 +38,7 @@ export default function Main() {
                 <UserContainer>
                     {profiles.map((profile) => (
                         <UserCard
-                        key={profile.id}
-                        id={profile.id}
-                        icon={profile.id}
-                        name={profile.name}
-                        bio={profile.bio}
-                        replyCount={profile.questionCount}
+                        profile={profile}
                         />
                     ))}
                 </UserContainer>

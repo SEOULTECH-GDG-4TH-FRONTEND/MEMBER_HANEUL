@@ -4,15 +4,10 @@ import '../../assets/font.css';
 
 import Submit from '../../assets/global/submit.svg';
 
-export default function SubmitBtn({ width, height, url }) {
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate(url); 
-    };
+export default function SubmitBtn({ width, height, onClick }) {
 
     return (
-        <Wrapper width={width} height={height} onClick={handleClick}>
+        <Wrapper width={width} height={height} onClick={onClick}>
             <Image src={Submit} draggable="false" />
         </Wrapper>
     );

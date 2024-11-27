@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Container from '../componenets/global/container';
 import Header from '../componenets/global/header';
@@ -12,12 +13,26 @@ import BackBtn from '../componenets/global/backBtn';
 
 export default function Board() {
     const location = useLocation();
-    const { icon, name, bio, replyCount} = location.state || {};
+    const navigate = useNavigate();
+    const { user } = location.state || {};
+
+    if (!user) {
+        console.log("board : User state is null or undefined.");
+        return;
+    }
+    else{
+        console.log("board : ",user)
+    }
+
+    const handleAskBtn = () => {
+        console.log("Navigating to ask_question with state:", { user });
+        navigate("/ask_question", { state: { user: user } });
+    };
 
     return (
         <Container>
             <Header justifyContent="center" alignContent="center">
-                <BoardHeader name={icon}/>
+                <BoardHeader name={user.id}/>
             </Header>
             <Body padding='0px 5px' justifyContent="space-between">
                 <CardContainer>
@@ -28,7 +43,9 @@ export default function Board() {
                 </CardContainer>
 
                 <Buttons>
-                    <CenterButtonWrapper><AskBtn/></CenterButtonWrapper>
+                    <CenterButtonWrapper>
+                    <AskBtn onClick={handleAskBtn}/>
+                    </CenterButtonWrapper>
                     <BackBtn url="/main"/>
                 </Buttons>
             </Body>
