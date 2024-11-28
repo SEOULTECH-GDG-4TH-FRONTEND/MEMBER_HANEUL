@@ -9,6 +9,7 @@ export default function UserCard({ profile }) {
     const navigate = useNavigate();
 
     const handleUserCard = () => {
+        // console.log("board- card profile:",profile);
         navigate("/board", { state: { user: profile } });
     };
 

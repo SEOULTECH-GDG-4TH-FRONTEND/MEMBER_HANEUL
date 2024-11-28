@@ -29,19 +29,19 @@ export default function AskQuestion() {
     }, [isLoggedIn, navigate]);
 
     if (!user) {
-        console.log("ask question : User state is null or undefined.");
+        // console.log("ask question : User state is null or undefined.");
         return <p>사용자 정보가 없습니다.</p>;
     }
     else{
-        console.log("ask question : ",location.state)
+        // console.log("ask question : ",location.state)
     }
 
     const handleSubmit = async () => {
         try {
-            console.log("content : ",content)
+            // console.log("content : ",content)
             await createQuestion({ targetId: user.id, content });
             alert("질문을 성공적으로 작성했습니다.");
-            navigate("/");
+            navigate(-1);
         } catch {
             alert("질문을 작성하는 데 실패했습니다.");
         }
@@ -57,7 +57,7 @@ export default function AskQuestion() {
                 <QuestionInput onChange={(e) => setContent(e.target.value)}/>
                 <Buttons>
                     <CenterButtonWrapper>
-                        <SubmitBtn width="72px" height="72px" url="/board" 
+                        <SubmitBtn width="72px" height="72px"
                             onClick={() => {
                                 handleSubmit();
                             }}

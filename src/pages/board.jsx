@@ -1,6 +1,10 @@
 import styled from 'styled-components';
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
+import { getReceivedQuestions, getSentQuestions } from "../apis/qna";
 
 import Container from '../componenets/global/container';
 import Header from '../componenets/global/header';
@@ -16,16 +20,40 @@ export default function Board() {
     const navigate = useNavigate();
     const { user } = location.state || {};
 
-    if (!user) {
-        console.log("board : User state is null or undefined.");
-        return;
-    }
-    else{
-        console.log("board : ",user)
-    }
+    const [sentQuestions, setSentQuestions] = useState([]);
+    const [receivedQuestions, setReceivedQuestions] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const sentQuestions = await getSentQuestions();
+                const receivedQuestions = await getReceivedQuestions();
+                setSentQuestions(sentQuestions);
+                setReceivedQuestions(receivedQuestions);
+                console.log("board.jsx>receivedQuestions:",receivedQuestions);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchData();
+    }, []);
+
+    // if (!user) {
+    //     console.log("board : User state is null or undefined.");
+    //     return;
+    // }else{
+    //     console.log("board : ",user)
+    // }
+
+    // if (!receivedQuestions){
+    //     console.log("board: receivedQUestions is undefined");
+    //     return;
+    // }else{
+    //     console.log("board: ",receivedQuestions)
+    // }
 
     const handleAskBtn = () => {
-        console.log("Navigating to ask_question with state:", { user });
+        // console.log("Navigating to ask_question with state:", { user });
         navigate("/ask_question", { state: { user: user } });
     };
 
@@ -36,10 +64,9 @@ export default function Board() {
             </Header>
             <Body padding='0px 5px' justifyContent="space-between">
                 <CardContainer>
-                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
-                    <QuestionCard writer='누리' title='궁금한 점' content='가나다라마바사아가나다라마바사아' status='replied'/>
-                    <QuestionCard writer='누리' title='누리는 아긴데' content='누리는 아긴데 언니는 늦잠만 자고 기분 별로 안 조아' status='replied'/>
-                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='replied'/>
+                    {receivedQuestions.map((question) => (
+                        <QuestionCard question={question}/>
+                    ))}
                 </CardContainer>
 
                 <Buttons>

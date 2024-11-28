@@ -3,20 +3,14 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../../assets/font.css';
 
-export default function BoardButton({ defaultText, hoverText, theme }) {
+export default function BoardButton({ defaultText, hoverText, theme, onClick}) {
     const [buttonText, setButtonText] = useState(defaultText);
-
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('../view_question'); 
-    };
 
     return (
         <Button
             onMouseEnter={() => setButtonText(hoverText)}
             onMouseLeave={() => setButtonText(defaultText)}
-            onClick={handleClick}
+            onClick={onClick}
             theme={theme}
         >
             {buttonText}

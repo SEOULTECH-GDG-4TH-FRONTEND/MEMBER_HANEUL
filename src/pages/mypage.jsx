@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { getReceivedQuestions, getSentQuestions } from "../apis/qna";
+
 import Container from '../componenets/global/container';
 import Header from '../componenets/global/header';
 import Body from '../componenets/global/body';
@@ -8,6 +14,28 @@ import QuestionCard from '../componenets/mypage/mypageCard';
 import BackBtn from '../componenets/global/backBtn';
 
 export default function Mypage() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { user } = location.state || {};
+
+    const [sentQuestions, setSentQuestions] = useState([]);
+    const [receivedQuestions, setReceivedQuestions] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const sentQuestions = await getSentQuestions();
+                const receivedQuestions = await getReceivedQuestions();
+                setSentQuestions(sentQuestions);
+                setReceivedQuestions(receivedQuestions);
+                // console.log(sentQuestions, receivedQuestions);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchData();
+    }, []);
+
     return (
         <Container>
             <Header justifyContent="center" alignContent="center">
@@ -15,14 +43,13 @@ export default function Mypage() {
             </Header>
             <Body padding='0px 5px' justifyContent="space-between">
                 <CardContainer>
-                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
-                    <QuestionCard writer='누리' title='궁금한 점' content='가나다라마바사아가나다라마바사아' status='replied'/>
-                    <QuestionCard writer='누리' title='누리는 아긴데' content='누리는 아긴데 언니는 늦잠만 자고 기분 별로 안 조아' status='pending'/>
-                    <QuestionCard writer='김하늘' title='질문 있어요~!' content='가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아가나다라마바사아' status='pending'/>
+                    {receivedQuestions.map((question) => (
+                        <QuestionCard question={question}/>
+                    ))}
                 </CardContainer>
 
                 <Buttons>
-                    <BackBtn url="/main"/>
+                    <BackBtn/>
                 </Buttons>
             </Body>
         </Container>

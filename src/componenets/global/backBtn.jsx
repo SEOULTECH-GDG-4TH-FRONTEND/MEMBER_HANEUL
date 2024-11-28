@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import '../../assets/font.css';
 
-export default function BackBtn({url}){
+export default function BackBtn(){
     const navigate = useNavigate();
 
     const handleClick = () => {
-        navigate(url); 
+        navigate(-1);
     };
 
     return (

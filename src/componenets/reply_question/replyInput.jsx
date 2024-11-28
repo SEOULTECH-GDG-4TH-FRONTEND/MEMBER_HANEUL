@@ -1,15 +1,23 @@
 import styled from 'styled-components';
+import { useState } from 'react';
 import '../../assets/font.css';
 
 import InputBox from "../../assets/reply/r_input.svg";
 
-export default function Question() {
+export default function Question({ initialText = "" }) {
+    const [text, setText] = useState(initialText);
+
+    const handleChange = (e) => {
+        setText(e.target.value); // 사용자 입력값을 상태로 업데이트
+    };
+
     return (
         <Wrapper>
             <textarea
-                type="text"
                 id="reply"
                 name="reply"
+                value={text} // 상태값을 value로 설정
+                onChange={handleChange} // 변경 시 상태 업데이트
                 placeholder="Answer to the question above..."
                 required
             ></textarea>
@@ -40,7 +48,7 @@ const Wrapper = styled.div`
         font-family: 'ABeeZee';
         font-size: 18px;
         outline: none;
+        resize: none;
         // border: 1px solid;
     }
-
-`
+`;

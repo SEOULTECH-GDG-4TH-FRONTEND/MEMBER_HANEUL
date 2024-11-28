@@ -1,4 +1,10 @@
 import styled from 'styled-components';
+import { useAuth } from "../context/AuthContext";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import { createAnswer } from "../apis/qna";
+
 import Container from '../componenets/global/container';
 import Header from '../componenets/global/header';
 import Body from '../componenets/global/body';
@@ -10,6 +16,27 @@ import SubmitBtn from '../componenets/global/submitBtn';
 import BackBtn from '../componenets/global/backBtn';
 
 export default function Question() {
+    const location = useLocation();
+    const { question } = location.state || {};
+    const navigate = useNavigate();
+
+    // console.log("Reply Question : ",question);
+
+    const [content, setContent] = useState("");
+    const questionId = question.questionId;
+
+    const handleSubmit = async () => {
+        try {
+            // console.log(question.questionId, question.content);
+
+            await createAnswer({ questionId, content });
+            alert("답변을 성공적으로 작성했습니다.");
+            navigate(-1);
+        } catch {
+            alert("답변을 작성하는 데 실패했습니다.");
+        }
+    };
+
     return (
         <Container>
             <Header justifyContent="start" alignItems="center">
@@ -17,13 +44,19 @@ export default function Question() {
             </Header>
             <Body padding='0px 5px' justifyContent="space-between">
                 <Contents>
-                    <QuestionRecieved questionText={".\n.\n\.\n.\n"}/>
-                    <ReplyInput/>
+                    <QuestionRecieved questionText={question.content}/>
+                    <ReplyInput initialText={question.answer ? question.answer.content : ""} onChange={(e) => setContent(e.target.value)}/>
                 </Contents>
 
                 <Buttons>
-                    <CenterButtonWrapper><SubmitBtn width="72px" height="72px" url="/board"/></CenterButtonWrapper>
-                    <BackBtn url="/mypage"/>
+                    <CenterButtonWrapper>
+                        <SubmitBtn width="72px" height="72px"
+                            onClick={() => {
+                                handleSubmit();
+                            }}
+                        />
+                    </CenterButtonWrapper>
+                    <BackBtn/>
                 </Buttons>
             </Body>
         </Container>

@@ -20,7 +20,7 @@ export default function Main() {
         )
         if (response.ok) {
           const data = await response.json()
-          console.log(data)
+          // console.log(data)
           setProfiles(data)
         }
       }

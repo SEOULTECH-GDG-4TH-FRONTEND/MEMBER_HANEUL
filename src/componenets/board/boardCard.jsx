@@ -1,22 +1,46 @@
 import styled from 'styled-components';
 import '../../assets/font.css';
 
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+
 import CardImg from '../../assets/board/question_card.svg'
 import Button from './boardBtn'
 
-export default function BoardCard({writer, title, content, status}){
+export default function BoardCard({question}){
+    const navigate = useNavigate();
+
+    const [status, setStatus] = useState([]);
+    useEffect(() => {
+        if (question.answer.content==="") {
+            // console.log("questionId:",question.questionId, ", content:",question.answer.content);
+            setStatus("pending");
+            // console.log("questionId:",question.questionId, ", status:",status);
+        } else {
+            // console.log("questionId:",question.questionId, ", content:",question.answer.content);
+            setStatus("replied");
+            // console.log("questionId:",question.questionId, ", status:",status);
+        }
+    }, [question.answer]);
+
+    const handleBtn = () => {
+        // console.log("board card: ",question)
+        navigate("/view_question", { state: { question: question } });
+    };
+
     return(
-        <Wrapper writer={writer} title={title} content={content} status={status}>
+        <Wrapper writer={question.author} title={question.content.slice(0, 10)} content={question.content} status={status}>
             <QuestionWrapper>
-                <Writer>{writer}</Writer>
-                <Title>{title}</Title>
-                <Content>{content}</Content>
+                <Writer>{question.author}</Writer>
+                <Title>{question.content.slice(0, 10)}</Title>
+                <Content>{question.content}</Content>
             </QuestionWrapper>
             <ButtonWrapper>
                 {status === 'replied' ? (
-                    <Button defaultText="replied !" hoverText="see more"/>
+                    <Button defaultText="replied !" hoverText="see more" onClick={handleBtn}/>
                 ) : (
-                    <Button defaultText="pending..." hoverText="see more" theme="#b2b2b2"/>
+                    <Button defaultText="pending..." hoverText="see more" theme="#b2b2b2" onClick={handleBtn}/>
                 )}
             </ButtonWrapper>
         </Wrapper>

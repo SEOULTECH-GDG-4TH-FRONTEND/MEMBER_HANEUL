@@ -1,22 +1,41 @@
 import styled from 'styled-components';
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import '../../assets/font.css';
 
 import CardImg from '../../assets/board/question_card.svg'
 import Button from './mypageBtn'
 
-export default function MypageCard({writer, title, content, status}){
+export default function MypageCard({question}){
+    const navigate = useNavigate();
+
+    const [status, setStatus] = useState([]);
+    useEffect(() => {
+        if (question.answer.content==="") {
+            setStatus("pending");
+        } else {
+            setStatus("replied");
+        }
+    }, [question.answer]);
+
+    const handleBtn = () => {
+        // console.log("mypage card: ",question)
+        navigate("/reply_question", { state: { question: question } });
+    };
+
     return(
-        <Wrapper writer={writer} title={title} content={content} status={status}>
+        <Wrapper>
             <QuestionWrapper>
-                <Writer>{writer}</Writer>
-                <Title>{title}</Title>
-                <Content>{content}</Content>
+                <Writer>{question.author}</Writer>
+                <Title>{question.content.slice(0, 10)}</Title>
+                <Content>{question.content}</Content>
             </QuestionWrapper>
             <ButtonWrapper>
                 {status === 'replied' ? (
-                    <Button defaultText="edit" hoverText="go edit"/>
+                    <Button defaultText="edit" hoverText="go edit" onClick={handleBtn}/>
                 ) : (
-                    <Button defaultText="reply" hoverText="go reply"/>
+                    <Button defaultText="reply" hoverText="go reply" onClick={handleBtn}/>
                 )}
             </ButtonWrapper>
         </Wrapper>

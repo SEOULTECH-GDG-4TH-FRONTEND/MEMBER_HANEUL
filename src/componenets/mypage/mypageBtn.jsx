@@ -3,20 +3,13 @@ import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../../assets/font.css';
 
-export default function MypageButton({ defaultText, hoverText }) {
+export default function MypageButton({ defaultText, hoverText, onClick }) {
     const [buttonText, setButtonText] = useState(defaultText);
-
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('../reply_question'); 
-    };
-
     return (
         <Button
             onMouseEnter={() => setButtonText(hoverText)}
             onMouseLeave={() => setButtonText(defaultText)}
-            onClick={handleClick}
+            onClick={onClick}
         >
             {buttonText}
         </Button>

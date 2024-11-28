@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 import Container from '../componenets/global/container';
 // import Header from '../componenets/global/header';
 // import Body from '../componenets/global/body';
@@ -9,15 +14,20 @@ import ReplyBox from '../componenets/view_question/replyBox';
 import BackBtn from '../componenets/global/backBtn';
 
 export default function ViewQuestion() {
+    const location = useLocation();
+    const { question } = location.state || {};
+
+    // console.log("View Question : ",question);
+
     return (
         <Container>
             <Header justifyContent="start" alignItems="center">
-                <ViewHeader to="김하늘" from="누리"/>
+                <ViewHeader to={question.target} from={question.author}/>
             </Header>
             <Body>
                 <Contents>
-                    <QuestionBox questionText={".\n.\n\.\n.\n.\n.\n\.\n.\n.\n.\n\.\n.\n"}/>
-                    <ReplyBox replyText={".\n.\n\.\n.\n.\n.\n\.\n.\n.\n.\n\.\n.\n"}/>
+                    <QuestionBox questionText={question.content}/>
+                    <ReplyBox replyText={question.answer ? question.answer.content : "not replied yet"}/>
                 </Contents>
 
                 <Buttons>

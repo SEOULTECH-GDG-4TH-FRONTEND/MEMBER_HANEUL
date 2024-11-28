@@ -6,15 +6,13 @@ import '../../assets/font.css';
 
 import { login } from "../../apis/user";
 
-export default function SignIn() {
+export default function SignUp() {
     const navigate = useNavigate();
-    const {setLogin, isLoggedIn } = useAuth();
-    const [email, setEmail] = useState(""); 
-    const [password, setPassword] = useState(""); 
-    const [responseMessage, setResponseMessage] = useState(""); 
-
-    const isLoggedInLocal = localStorage.getItem("isLoggedIn");
-    // console.log("IsLoggedInLocal : ",isLoggedInLocal);
+    const { isLoggedIn } = useAuth();
+    const [username, setUsername] = useState("");
+    const [password1, setPassword1] = useState("");
+    const [password2, setPassword2] = useState("");
+    const [email, setEmail] = useState("");
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -22,22 +20,27 @@ export default function SignIn() {
         }
     }, [isLoggedIn, navigate]);
 
-    const handleSignIn = async (e) => {
-        e.preventDefault();
+    const handleSignup = async () => {
         try {
-            await login(email, password).then((data) => {
-                // console.log(data);
-                setLogin();
-            })
-            alert("로그인 성공");
+            await signup(username, password1, password2, email);
+            alert("회원가입 성공");
+            navigate("/login");
         } catch (error) {
-            alert("로그인 실패");
+            alert("회원가입 실패");
         }
     };
 
     return (
         <Wrapper>
-            <p>Sign in</p>
+            <p>Create New Account</p>
+            <input
+                type="test"
+                id="username"
+                name="username"
+                placeholder="name"
+                onChange={(e) => setUsername(e.target.value)} 
+                required
+            />
             <input
                 type="email"
                 id="email"
@@ -48,15 +51,22 @@ export default function SignIn() {
                 required
             />
             <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)} // password 상태 업데이트
+                type="password1"
+                id="password1"
+                name="password1"
+                placeholder="password1"
+                onChange={(e) => setPassword1(e.target.value)} // password 상태 업데이트
                 required
             />
-            <button onClick={(e) => handleSignIn(e)}>Sign in</button>
+            <input
+                type="password2"
+                id="password2"
+                name="password2"
+                placeholder="password2"
+                onChange={(e) => setPassword2(e.target.value)} // password 상태 업데이트
+                required
+            />
+            <button onClick={(e) => handleSignup(e)}>Sign up</button>
         </Wrapper>
     );
 }
