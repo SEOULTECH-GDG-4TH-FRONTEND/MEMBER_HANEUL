@@ -20,15 +20,37 @@ export default function SignUp() {
         }
     }, [isLoggedIn, navigate]);
 
-    const handleSignup = async () => {
+    const handleSignup = async (e) => {
+        e.preventDefault();
+        if (!username || !email || !password1 || !password2) {
+            alert("모든 필드를 입력해야 합니다.");
+            return;
+        }
+        if (username.length < 3 || username.length > 25) {
+            alert("사용자 이름은 3자 이상, 25자 이하로 입력해야 합니다.");
+            return;
+        }
+        if (password1 !== password2) {
+            alert("비밀번호가 일치하지 않습니다.");
+            return;
+        }
+        if (password1.length < 3 || password1.length > 25) {
+            alert("비밀번호는 3자 이상, 25자 이하로 입력해야 합니다.");
+            return;
+        }
+    
         try {
             await signup(username, password1, password2, email);
             alert("회원가입 성공");
-            console.log("회원가입 성공")
             navigate("/login");
         } catch (error) {
-            alert("회원가입 실패");
-            console.log("회원가입 실패")
+            if (error.response) {
+                alert(`회원가입 실패: ${error.response.data?.message || "요청이 잘못되었습니다."}`);
+                console.error("서버 응답 데이터:", error.response.data);
+            } else {
+                alert("알 수 없는 오류가 발생했습니다.");
+                console.error("회원가입 오류:", error);
+            }
         }
     };
 
@@ -53,7 +75,7 @@ export default function SignUp() {
                 required
             />
             <input
-                type="password1"
+                type="password"
                 id="password1"
                 name="password1"
                 placeholder="password1"
@@ -61,14 +83,14 @@ export default function SignUp() {
                 required
             />
             <input
-                type="password2"
+                type="password"
                 id="password2"
                 name="password2"
                 placeholder="password2"
                 onChange={(e) => setPassword2(e.target.value)} // password 상태 업데이트
                 required
             />
-            <button onClick={(e) => handleSignup(e)}>Sign up</button>
+            <button type="button" onClick={(e) => handleSignup(e)}>Sign up</button>
         </Wrapper>
     );
 }
