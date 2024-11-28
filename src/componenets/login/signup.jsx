@@ -1,11 +1,18 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import '../../assets/font.css'
 
 export default function SignUp() {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/create_account');
+    };
+
     return (
         <Wrapper>
             <p>-or-</p>
-            <button type="button" onclick="location.href='signup.html'">Create Account</button>
+            <button type="button" onClick={handleClick}>Create Account</button>
         </Wrapper>
     );
 }

@@ -2,15 +2,13 @@ import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
 
 import Logo from '../assets/global/Logo.svg';
-import SignIn from '../componenets/login/signIn'
-import SignUp from '../componenets/login/signup'
+import SignUp from '../componenets/create_account/signUp';
 
-export default function Login(){
+export default function CreateAccount(){
     return (
         <WrapperParent>
             <Wrapper>
                 <LogoStyle src={Logo} alt="Logo" />
-                <SignIn/>
                 <SignUp/>
             </Wrapper>
         </WrapperParent>

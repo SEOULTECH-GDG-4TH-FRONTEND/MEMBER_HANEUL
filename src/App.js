@@ -2,6 +2,7 @@ import './App.css';
 import { AuthProvider } from "./context/AuthContext";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import SignUp from './pages/create_account';
 import Login from './pages/login';
 import Main from './pages/main';
 import Sample from './pages/sample';
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/create_account" element={<SignUp/>} />
           <Route path="/main" element={<Main />} />
           <Route path="/sample" element={<Sample />} />
           <Route path="/board" element={<Board />} />

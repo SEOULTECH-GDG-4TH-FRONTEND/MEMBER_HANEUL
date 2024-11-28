@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import '../../assets/font.css';
 
-import { login } from "../../apis/user";
+import { signup } from "../../apis/user";
 
 export default function SignUp() {
     const navigate = useNavigate();
@@ -24,9 +24,11 @@ export default function SignUp() {
         try {
             await signup(username, password1, password2, email);
             alert("회원가입 성공");
+            console.log("회원가입 성공")
             navigate("/login");
         } catch (error) {
             alert("회원가입 실패");
+            console.log("회원가입 실패")
         }
     };
 
@@ -72,9 +74,9 @@ export default function SignUp() {
 }
 
 const Wrapper = styled.div`
-    margin-top: 35px;
+    margin-top: 15px;
     width: 387px;
-    height: 195px;
+    height: 300px;
     box-sizing: border-box;
     border: 1px solid #e5e5e5;
     border-radius: 20px;
@@ -88,7 +90,7 @@ const Wrapper = styled.div`
         font-family: 'ADLaM Display';
         font-size: 20px;
         color: #000000;
-        margin: 0px;
+        margin: 0 0 10px 0;
     }
 
     input {
@@ -114,6 +116,7 @@ const Wrapper = styled.div`
     }
 
     button {
+        margin-top: 10px;
         width: 71px;
         height: 25px;
         line-height: 20px;
